@@ -1,28 +1,32 @@
 package br.com.raynerweb.tracking.rest;
 
+import br.com.raynerweb.tracking.dto.error.ResponseValidationError;
 import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
 import br.com.raynerweb.tracking.dto.location.ResponseTrackingLocationDto;
-import br.com.raynerweb.tracking.service.TrackingLocationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("tracking-location")
-public class TrackingLocationRest {
-    @Autowired
-    private TrackingLocationService service;
+public interface TrackingLocationRest {
 
-    @GetMapping
-    public List<ResponseTrackingLocationDto> findAll() {
-        return service.findAll();
-    }
+    @Operation(summary = "Fetch Tracking Location")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetch Tracking Location",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseTrackingLocationDto[].class))})
+    })
+    List<ResponseTrackingLocationDto> findAll();
 
-    @PostMapping
-    public void save(@Valid
-                     @RequestBody RequestTrackingLocationDto dto) {
-        service.saveAsync(dto);
-    }
+    @Operation(summary = "Save Tracking Location")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Save Tracking Location"),
+            @ApiResponse(responseCode = "400", description = "Input Validation",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ResponseValidationError.class)))})
+    void save(@Valid RequestTrackingLocationDto dto);
 }
