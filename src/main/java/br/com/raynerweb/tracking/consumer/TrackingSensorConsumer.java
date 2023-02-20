@@ -1,8 +1,6 @@
 package br.com.raynerweb.tracking.consumer;
 
-import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
 import br.com.raynerweb.tracking.dto.sensor.RequestTrackingSensorDto;
-import br.com.raynerweb.tracking.service.TrackingLocationService;
 import br.com.raynerweb.tracking.service.TrackingSensorService;
 import com.google.gson.Gson;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

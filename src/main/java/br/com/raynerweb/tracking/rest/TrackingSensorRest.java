@@ -3,6 +3,7 @@ package br.com.raynerweb.tracking.rest;
 import br.com.raynerweb.tracking.dto.sensor.RequestTrackingSensorDto;
 import br.com.raynerweb.tracking.dto.sensor.ResponseTrackingSensorDto;
 import br.com.raynerweb.tracking.service.TrackingSensorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,8 @@ public class TrackingSensorRest {
     }
 
     @PostMapping
-    public void save(@RequestBody RequestTrackingSensorDto dto) {
+    public void save(@Valid
+                     @RequestBody RequestTrackingSensorDto dto) {
         service.saveAsync(dto);
     }
 }

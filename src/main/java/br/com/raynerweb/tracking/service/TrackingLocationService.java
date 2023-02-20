@@ -1,7 +1,7 @@
 package br.com.raynerweb.tracking.service;
 
-import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
 import br.com.raynerweb.tracking.dto.VehicleDto;
+import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
 import br.com.raynerweb.tracking.dto.location.ResponseTrackingLocationDto;
 import br.com.raynerweb.tracking.exception.InternalServerErrorException;
 import br.com.raynerweb.tracking.exception.NotFoundException;
@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 

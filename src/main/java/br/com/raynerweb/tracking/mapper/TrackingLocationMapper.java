@@ -1,7 +1,7 @@
 package br.com.raynerweb.tracking.mapper;
 
-import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
 import br.com.raynerweb.tracking.dto.VehicleDto;
+import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
 import br.com.raynerweb.tracking.dto.location.ResponseTrackingLocationDto;
 import br.com.raynerweb.tracking.entity.TrackingLocationEntity;
 import org.springframework.stereotype.Component;
