@@ -15,6 +15,6 @@ public class TrackingLocationRest {
 
     @PostMapping
     public void save(TrackingLocationDto dto) {
-        service.save(dto);
+        service.saveAsync(dto);
     }
 }
