@@ -1,0 +1,9 @@
+package br.com.raynerweb.tracking.repository;
+
+import br.com.raynerweb.tracking.entity.TrackingLocationEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TrackingLocationRepository extends JpaRepository<TrackingLocationEntity, Long> {
+}
