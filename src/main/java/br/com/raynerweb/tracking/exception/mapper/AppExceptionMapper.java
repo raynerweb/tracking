@@ -105,8 +105,6 @@ public class AppExceptionMapper {
 
     private List<AppFieldValidation> map(List<FieldError> fieldErrors) {
         return fieldErrors.stream().map(fieldError -> new AppFieldValidation(
-                        fieldError.getObjectName() + "." +
-                                fieldError.getField(),
                         messageSource.getMessage(fieldError, Locale.getDefault()),
                         fieldError.getCode()))
                 .toList();
