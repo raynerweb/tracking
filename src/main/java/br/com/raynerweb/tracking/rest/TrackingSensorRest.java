@@ -1,11 +1,13 @@
 package br.com.raynerweb.tracking.rest;
 
-import br.com.raynerweb.tracking.dto.TrackingSensorDto;
+import br.com.raynerweb.tracking.dto.sensor.RequestTrackingSensorDto;
+import br.com.raynerweb.tracking.dto.sensor.ResponseTrackingSensorDto;
 import br.com.raynerweb.tracking.service.TrackingSensorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("tracking-sensor")
@@ -14,8 +16,14 @@ public class TrackingSensorRest {
     @Autowired
     private TrackingSensorService service;
 
+    @GetMapping
+    public List<ResponseTrackingSensorDto> findAll() {
+        return service.findAll();
+    }
+
     @PostMapping
-    public void save(TrackingSensorDto dto) {
-        service.save(dto);
+    public void save(@Valid
+                     @RequestBody RequestTrackingSensorDto dto) {
+        service.saveAsync(dto);
     }
 }
