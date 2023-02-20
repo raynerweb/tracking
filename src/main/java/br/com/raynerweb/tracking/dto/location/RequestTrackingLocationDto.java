@@ -1,8 +1,8 @@
-package br.com.raynerweb.tracking.dto;
+package br.com.raynerweb.tracking.dto.location;
 
 import java.math.BigDecimal;
 
-public record TrackingLocationDto(
+public record RequestTrackingLocationDto(
         Long vehicleId,
         BigDecimal latitude,
         BigDecimal longitude

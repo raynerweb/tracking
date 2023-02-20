@@ -1,6 +1,6 @@
 package br.com.raynerweb.tracking.producer;
 
-import br.com.raynerweb.tracking.dto.TrackingLocationDto;
+import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -22,7 +22,7 @@ public class TrackingLocationProducer {
     @Autowired
     private Gson gson;
 
-    public void send(TrackingLocationDto dto) {
+    public void send(RequestTrackingLocationDto dto) {
         rabbitTemplate.convertAndSend(this.queue.getName(), gson.toJson(dto));
     }
 }
