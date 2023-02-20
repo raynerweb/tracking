@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    public static final String SENSO_QUEUE = "sensorQueue";
+    public static final String SENSOR_QUEUE = "sensorQueue";
     public static final String LOCATION_QUEUE = "locationQueue";
 
     @Value("${br.com.raynerweb.sensors.queue}")
@@ -18,7 +18,7 @@ public class RabbitMQConfig {
     private String locationQueueName;
 
 
-    @Bean(name = SENSO_QUEUE)
+    @Bean(name = SENSOR_QUEUE)
     public Queue sensorQueue() {
         return new Queue(sensorQueueName, false);
     }

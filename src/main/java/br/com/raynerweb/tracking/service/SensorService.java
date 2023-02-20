@@ -23,8 +23,8 @@ public class SensorService {
     @Value("${sensor.uri}")
     private String uri;
 
-    public SensorDto findById(Long id) {
-        Map<String, Long> variables = new HashMap<>();
+    public SensorDto findById(String id) {
+        Map<String, String> variables = new HashMap<>();
         variables.putIfAbsent("id", id);
         RestTemplate restTemplate = new RestTemplate();
         try {
