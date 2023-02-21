@@ -64,10 +64,14 @@ public class SensorServiceTest {
     }
 
     private ResponseEntity<SensorDto> success() {
-        return new ResponseEntity<>(new SensorDto(
-                SENSOR_ID,
-                SENSOR_NAME), HttpStatusCode.valueOf(HttpStatus.OK.value())
+        return new ResponseEntity<>(sensorDto(), HttpStatusCode.valueOf(HttpStatus.OK.value())
         );
+    }
+
+    public static SensorDto sensorDto() {
+        return new SensorDto(
+                SENSOR_ID,
+                SENSOR_NAME);
     }
 
 }
