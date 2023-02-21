@@ -66,11 +66,15 @@ public class VehicleServiceTest {
 
     private ResponseEntity<VehicleDto> dto() {
         return new ResponseEntity<>(
-                new VehicleDto(1L,
-                        UUID.randomUUID().toString(),
-                        UUID.randomUUID().toString(),
-                        UUID.randomUUID().toString(),
-                        "123", "WHITE", "123"),
+                vehicleDto(),
                 HttpStatusCode.valueOf(HttpStatus.OK.value()));
+    }
+
+    public static VehicleDto vehicleDto() {
+        return new VehicleDto(1L,
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
+                "123", "WHITE", "123");
     }
 }
