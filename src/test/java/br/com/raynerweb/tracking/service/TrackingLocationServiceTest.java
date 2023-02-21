@@ -23,7 +23,8 @@ import java.util.List;
 
 import static br.com.raynerweb.tracking.service.VehicleServiceTest.vehicleDto;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ActiveProfiles("TEST")

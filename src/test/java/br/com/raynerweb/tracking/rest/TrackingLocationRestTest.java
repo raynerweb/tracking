@@ -1,22 +1,20 @@
 package br.com.raynerweb.tracking.rest;
 
-import br.com.raynerweb.tracking.App;
 import br.com.raynerweb.tracking.dto.error.ResponseFieldError;
 import br.com.raynerweb.tracking.dto.error.ResponseValidationError;
 import br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto;
-import br.com.raynerweb.tracking.dto.location.ResponseTrackingLocationDto;
 import br.com.raynerweb.tracking.service.TrackingLocationService;
 import com.google.gson.Gson;
-import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -25,24 +23,26 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 import static br.com.raynerweb.tracking.dto.location.RequestTrackingLocationDto.*;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
 
+@ActiveProfiles("TEST")
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = App.class)
-@WebAppConfiguration
-public class TrackinLocationRestTest {
+@WebMvcTest(controllers = TrackingLocationRest.class)
+public class TrackingLocationRestTest {
 
+    @Autowired
     private MockMvc mvc;
     private String uri;
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
+//    @Autowired
+//    private WebApplicationContext webApplicationContext;
 
-    @Mock
+    @MockBean
     private TrackingLocationService service;
 
     @Autowired
@@ -51,7 +51,7 @@ public class TrackinLocationRestTest {
     @Before
     public void setUp() {
         uri = "/tracking-location";
-        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+//        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
     @Test

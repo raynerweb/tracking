@@ -1,6 +1,5 @@
 package br.com.raynerweb.tracking.service;
 
-import br.com.raynerweb.tracking.dto.SensorDto;
 import br.com.raynerweb.tracking.dto.VehicleDto;
 import br.com.raynerweb.tracking.exception.InternalServerErrorException;
 import br.com.raynerweb.tracking.exception.NotFoundException;

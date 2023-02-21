@@ -1,6 +1,5 @@
 package br.com.raynerweb.tracking.rest;
 
-import br.com.raynerweb.tracking.App;
 import br.com.raynerweb.tracking.dto.error.ResponseFieldError;
 import br.com.raynerweb.tracking.dto.error.ResponseValidationError;
 import br.com.raynerweb.tracking.dto.sensor.RequestTrackingSensorDto;
@@ -11,10 +10,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -31,18 +31,19 @@ import static br.com.raynerweb.tracking.dto.sensor.RequestTrackingSensorDto.SENS
 import static br.com.raynerweb.tracking.dto.sensor.RequestTrackingSensorDto.SENSOR_REQUIRED;
 import static org.junit.Assert.*;
 
+@ActiveProfiles("TEST")
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = App.class)
-@WebAppConfiguration
-public class TrackinSensorRestTest {
+@WebMvcTest(controllers = TrackingSensorRest.class)
+public class TrackingSensorRestTest {
 
+    @Autowired
     private MockMvc mvc;
     private String uri;
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
+//    @Autowired
+//    private WebApplicationContext webApplicationContext;
 
-    @Mock
+    @MockBean
     private TrackingSensorService service;
 
     @Autowired
@@ -51,7 +52,7 @@ public class TrackinSensorRestTest {
     @Before
     public void setUp() {
         uri = "/tracking-sensor";
-        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+//        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
     @Test
