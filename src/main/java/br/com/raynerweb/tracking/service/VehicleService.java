@@ -5,6 +5,7 @@ import br.com.raynerweb.tracking.exception.InternalServerErrorException;
 import br.com.raynerweb.tracking.exception.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,13 +21,15 @@ public class VehicleService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(VehicleService.class);
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @Value("${vehicle.uri}")
     private String uri;
 
     public VehicleDto findById(Long id) {
         Map<String, Long> variables = new HashMap<>();
         variables.putIfAbsent("id", id);
-        RestTemplate restTemplate = new RestTemplate();
         try {
             ResponseEntity<VehicleDto> forEntity = restTemplate.getForEntity(uri, VehicleDto.class, variables);
             return forEntity.getBody();
