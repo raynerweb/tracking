@@ -6,6 +6,9 @@ import br.com.raynerweb.tracking.dto.location.ResponseTrackingLocationDto;
 import br.com.raynerweb.tracking.entity.TrackingLocationEntity;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -13,6 +16,8 @@ import java.util.UUID;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+@ActiveProfiles("TEST")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class TrackingLocationMapperTest {
 
     private TrackingLocationMapper mapper;
