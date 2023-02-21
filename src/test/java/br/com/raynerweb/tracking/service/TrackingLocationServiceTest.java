@@ -74,7 +74,7 @@ public class TrackingLocationServiceTest {
     @Test
     public void testFindAll() {
         when(repository.findAll()).thenReturn(list());
-        when(mapper.entityToDto(saved())).thenReturn(response());
+//        when(mapper.entityToDto(saved())).thenReturn(response());
         List<ResponseTrackingLocationDto> all = service.findAll();
         assertNotNull(all);
     }
